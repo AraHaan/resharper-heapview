@@ -138,7 +138,7 @@ public class AllocationOfParamsArrayAnalyzer : HeapAllocationAnalyzerBase<ICShar
           return;
         }
 
-        if (argumentsOwner.GetResolveContext().RuntimeSupportsInlineArrayTypes())
+        if (CompilationContextCookie.GetContext().RuntimeSupportsInlineArrayTypes())
         {
           return;
         }
@@ -164,7 +164,7 @@ public class AllocationOfParamsArrayAnalyzer : HeapAllocationAnalyzerBase<ICShar
 
         if (firstExpandedArgument != null
             && !argumentsOwner.CanBeLoweredToRuntimeHelpersCreateSpan(paramsParameter.Element, targetTypeInfo.ElementType)
-            && !argumentsOwner.GetResolveContext().RuntimeSupportsInlineArrayTypes())
+            && !CompilationContextCookie.GetContext().RuntimeSupportsInlineArrayTypes())
         {
           // we need heap array
 
